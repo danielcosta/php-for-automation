@@ -1,5 +1,4 @@
-FROM yavin/alpine-php-fpm:7.0
+FROM daccbr/php-for-automation
 
-RUN apk --update add php7-xdebug && rm -rf /var/cache/apk/*
-
-RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" && php composer-setup.php --install-dir=/usr/local/bin --filename=composer
+COPY 02_phalcon.ini /etc/php7/conf.d/02_phalcon.ini
+COPY phalcon.so /lib/php7/modules/phalcon.so
